@@ -11,6 +11,5 @@ import {EmployeeModel} from "../../model/employee.model";
 })
 export class EmployeesFacesComponent {
   data$: Observable<EmployeeModel[]> = this._httpClient.get<EmployeeModel[]>('assets/data/employees.json')
-  constructor(private _httpClient: HttpClient) {
-  }
+  constructor(private _httpClient: HttpClient) {}
 }
