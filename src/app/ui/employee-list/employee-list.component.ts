@@ -1,16 +1,20 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../../services/employee.service';
-import {PersonModel} from "../../model/person.model";
-
 
 @Component({
   selector: 'employee-list',
   templateUrl: './employee-list.component.html',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeListComponent {
-  constructor(private _employeeService: EmployeeService) { }
-  data$: Observable<PersonModel[]> = this._employeeService.getAll();
+  data$ = this._employeeService.getAll();
+  constructor(private _employeeService: EmployeeService, private _httpClient: HttpClient) {
+  }
+
+  remove(id: string) {
+    this._employeeService.delete(id).subscribe();
+
+  }
 }

@@ -10,6 +10,6 @@ export class FacesService {
   }
 
   getAll(): Observable<PersonModel[]> {
-    return this._httpClient.get<PersonModel[]>('assets/data/people.json')
+    return this._httpClient.get<PersonModel[]>('https://fakestoreapi.com/products')
   }
 }
